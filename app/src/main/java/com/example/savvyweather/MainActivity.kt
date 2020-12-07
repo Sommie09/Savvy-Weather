@@ -28,13 +28,14 @@ class MainActivity : AppCompatActivity() {
             if(zipCode.length != 5){
                 Toast.makeText(this, "Please enter valid code", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this, zipCode, Toast.LENGTH_SHORT).show()
+               forecastRepository.loadForecast(zipCode)
             }
         }
 
         //Creating an observer
         val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
             //Update adapter
+            Toast.makeText(this, "Loaded items", Toast.LENGTH_SHORT).show()
         }
         forecastRepository.weeklyForecast.observe(this, weeklyForecastObserver)
 
