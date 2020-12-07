@@ -6,8 +6,13 @@ import android.text.BoringLayout.make
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val forecastRepository = ForecastRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,6 +31,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, zipCode, Toast.LENGTH_SHORT).show()
             }
         }
+
+        //Creating an observer
+        val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
+            //Update adapter
+        }
+        forecastRepository.weeklyForecast.observe(this, weeklyForecastObserver)
 
 
     }
