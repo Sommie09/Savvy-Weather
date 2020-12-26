@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity() {
                forecastRepository.loadForecast(zipCode)
             }
         }
+
+        val forecastList: RecyclerView = findViewById(R.id.recycler_view)
+        forecastList.layoutManager = LinearLayoutManager(this)
 
         //Creating an observer
         val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
