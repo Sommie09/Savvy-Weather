@@ -42,13 +42,13 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
         forecastList.adapter = dailyForecastAdapter
-//
-//        //Creating an observer
-//        val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
-//            //Update adapter
-//           dailyForecastAdapter.submitList(forecastItems)
-//        }
-//        forecastRepository.weeklyForecast.observe(this, weeklyForecastObserver)
+
+        //Creating an observer
+        val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
+            //Update adapter
+           dailyForecastAdapter.submitList(forecastItems)
+        }
+        forecastRepository.weeklyForecast.observe(this, weeklyForecastObserver)
 
 
     }
